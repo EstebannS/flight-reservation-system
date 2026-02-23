@@ -119,13 +119,15 @@ class AuthController {
       let decoded;
       try {
         decoded = jwt.verify(token, process.env.JWT_SECRET || 'mi_clave_secreta_super_segura_2024');
+        console.log('resetPassword - decoded token:', decoded, 'type of id:', typeof decoded.id);
       } catch (e) {
         return res.status(400).json({ success: false, error: 'Token inválido o expirado' });
       }
 
       if (decoded.purpose !== 'reset') return res.status(400).json({ success: false, error: 'Token inválido' });
 
-      const user = await User.findById(decoded.id);
+      const user = await User.findByIdIncludeInactive(decoded.id);
+      console.log('verifyEmail - user lookup result:', user && user.toJSON ? user.toJSON() : user);
       if (!user) return res.status(404).json({ success: false, error: 'Usuario no encontrado' });
 
       await user.setPassword(password);
@@ -152,7 +154,9 @@ class AuthController {
 
       if (decoded.purpose !== 'verify') return res.status(400).json({ success: false, error: 'Token inválido' });
 
-      const user = await User.findById(decoded.id);
+      console.log('verifyEmail - decoded token:', decoded, 'type of id:', typeof decoded.id);
+      const user = await User.findByIdIncludeInactive(decoded.id);
+      console.log('verifyEmail - user lookup result:', user && user.toJSON ? user.toJSON() : user);
       if (!user) return res.status(404).json({ success: false, error: 'Usuario no encontrado' });
 
       await user.setActive(true);

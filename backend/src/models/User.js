@@ -59,6 +59,20 @@ class User {
         }
     }
 
+    // Buscar usuario por ID sin filtrar is_active (útil para verificación por email)
+    static async findByIdIncludeInactive(id) {
+        try {
+            const [rows] = await pool.execute(
+                'SELECT * FROM users WHERE id = ?',
+                [id]
+            );
+            return rows.length ? new User(rows[0]) : null;
+        } catch (error) {
+            console.error('Error en User.findByIdIncludeInactive:', error);
+            throw error;
+        }
+    }
+
     // Crear nuevo usuario
     static async create(userData) {
         try {

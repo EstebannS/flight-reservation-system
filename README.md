@@ -1,7 +1,6 @@
 # ✈️ SkyReserve - Sistema de Reserva de Vuelos
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 Sistema completo de reserva de vuelos desarrollado como prueba técnica para **INTOUCH CX COLOMBIA**. Aplicación web responsive con autenticación, búsqueda de vuelos, reserva multi-paso y simulación de pagos.
 

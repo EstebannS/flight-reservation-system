@@ -105,3 +105,97 @@ flight-reservation-system/
    ```bash
    git clone https://github.com/EstebanSalazarPe/flight-reservation-system.git
    cd flight-reservation-system
+2. **Configurar la base de datos**
+
+Iniciar XAMPP y activar MySQL
+
+Abrir phpMyAdmin: http://localhost/phpmyadmin
+
+Crear base de datos: flight_reservation
+
+Importar el archivo database/schema.sql
+
+3. **Configurar el backend**
+cd backend
+npm install
+cp .env.example .env
+# Editar .env con tus credenciales de MySQL
+
+4. **Configurar el frontend**
+cd frontend
+npm install
+
+Variables de Entorno (backend/.env)
+PORT=3000
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=
+DB_NAME=flight_reservation
+JWT_SECRET=tu_clave_secreta_aqui
+
+
+5. **Ejecución**
+
+cd backend
+npm run dev
+# El servidor correrá en http://localhost:3000
+
+cd frontend
+npm run dev
+# La aplicación correrá en http://localhost:5173
+
+Usuarios de Prueba
+json
+{
+  "email": "test@example.com",
+  "password": "123456"
+}
+
+📡 API Endpoints
+Autenticación
+POST /api/auth/register - Registrar usuario
+
+POST /api/auth/login - Iniciar sesión
+
+GET /api/auth/verify - Verificar token
+
+Vuelos
+GET /api/flights/search?origin=BOG&destination=MDE&date=2024-03-20 - Buscar vuelos
+
+GET /api/flights/:id - Obtener vuelo por ID
+
+Reservas
+POST /api/reservations - Crear reserva
+
+GET /api/reservations/my-reservations - Mis reservas
+
+POST /api/reservations/:id/confirm-payment - Confirmar pago
+
+**👨‍💻 Desarrollador**
+Esteban Felipe Salazar Peña
+
+📧 Email: estebannsalazar@gmail.com
+
+📱 Teléfono: 3203489406
+
+💼 LinkedIn: [Esteban Salazar](https://www.linkedin.com/in/esteban-salazar-a3273b205/)
+
+Sobre el Desarrollo
+Este proyecto fue desarrollado como prueba técnica para INTOUCH CX COLOMBIA. Se implementó siguiendo las mejores prácticas de desarrollo de software:
+
+Arquitectura MVC - Separación clara de responsabilidades
+
+Código limpio - Nomenclatura consistente y comentarios
+
+UX/UI profesional - Diseño responsive similar a aerolíneas reales
+
+Seguridad - Contraseñas encriptadas, JWT, validaciones
+
+Documentación - README completo y comentarios en código
+
+📝 Licencia
+Este proyecto es de uso exclusivo para evaluación técnica.
+
+**¡Gracias por revisar mi trabajo! 🚀**
+
+**✈️ SkyReserve - Vuela por Colombia con la mejor experiencia**
